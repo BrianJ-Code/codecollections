@@ -1,3 +1,4 @@
+/*
 class Person {
     constructor(age,name){
         this.name = name
@@ -10,7 +11,6 @@ class Person {
 const steve = new Person(44, 'Steve');
 console.log(steve.calculateBirthYear());
 
-/*
 one class to create the object person, album, movie model
 take arguments
 
@@ -35,21 +35,66 @@ call relevant methods
 seperate event handler for removing/deleting
 */
 class physics {
-    constructor(distance, time, v0, vf, acceleration){
-        this.distance = distance;
-        this.time = time;
-        this.v0 = v0;
-        this.vf = vf;
-        this.acceleration = acceleration
+    constructor(distance){ 
+        this.distance = distance.value; //see this 'value' here is important to get the value unless you want the actual element which isnt wrong either
     }
 }
-
+/*
 class UI {
-    constructor(){
+    let html = '<div class="Solver"><div class="Distance">%distance%</div><div class="Time">%time%</div><div class="Velocity0">%v0%</div><div class="VelocityF">%vf%</div><div class="Acceleration">%acceleration%</div> </div>';
+    let newHtml = html.replace('%distance%', distance.value + "meters");
+    newHtml = newHtml.replace('%time%', time.value + "seconds");
+    newHtml = newHtml.replace('%v0%', v0.value + "m/s");
+    newHtml = newHtml.replace('%vf%', vf.value + "m/s");
+    newHtml = newHtml.replace('%acceleration%', acceleration.value + "m/s^2");
+    display.insertAdjacentHTML('beforeend', newHtml);
+    e.preventDefault();
 
+}
+*/
+
+const form = document.querySelector('#kinematics');
+const distance = document.querySelector('#Distance');
+const time = document.querySelector('#Time')
+const v0 = document.querySelector('#Velocity0');
+const vf = document.querySelector('#VelocityF');
+const acceleration = document.querySelector('Acceleration');
+
+function eventListeners(){
+    form.addEventListener('submit', formvalidation);
+}
+eventListeners();
+
+function formvalidation(){
+    if (distance.value !== "" && v0.value !== "" && vf.value !== ""){
+        acceleration = (Math.sqrt(vf.value) - Math.sqrt(v0.value)) / (2 * distance.value)
+        time = (vf.value - v0.value) / acceleration
+    }else if(distance.value !== "" && v0.value !== "" && acceleration.value !== ""){
+
+    }else if(distance.value !== "" && v0.value !== "" && time.value !== ""){
+        
+    }else if(distance.value !== "" && vf.value !== "" && acceleration.value !== ""){
+
+    }else if(distance.value !== "" && vf.value !== "" && acceleration.value !== ""){
+        
+    }else if(distance.value !== "" && acceleration.value !== "" && time.value !== ""){
+
+    }else if(v0.value !== "" && vf.value !== "" && acceleration.value !== ""){
+        
+    }else if(v0.value !== "" && vf.value !== "" && time.value !== ""){
+
+    }else if(v0.value !== "" && acceleration.value !== "" && time.value !== ""){
+        
+    }else if(vf.value !== "" && acceleration.value !== "" && time.value !== ""){
+
+    }else{
+        alert("The necessary fields are not complete. Please fill in at least 3 fields to calculate.");
+        return false;
     }
 }
 
+
+/*
 const kinematics = document.querySelector('#kinematics'); 
 const distance = document.querySelector('#Distance');
 const time = document.querySelector('#Time');
@@ -62,11 +107,6 @@ function eventListeners(){
     form.addEventListener('submit', displayAnswers);
     display.addEventListener('click', removeAnswers);
 }
-
-eventListeners();
-
-
-
 
 
 function displayAnswers(e) {
@@ -82,7 +122,10 @@ function displayAnswers(e) {
 
 }
 
-const variables = [distance, time, v0, vf, acceleration];
-function tester () {
-    if (isNaN())
+function removeAnswer(e) {
+    if(e.target.parentElement.classList.constains()){
+        console.log(target.parentElement);
+    }
 }
+
+*/
